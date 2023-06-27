@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "_id": "00001,",
+      "category": {
+        "_d": "cat1",
+        "name": "Ctegory 1"
+      },
+      "name": "Voiture",
+      "price": "25",
+      "description": "eeeeeeeeeeeeezzzz zgyyye"
+    },
+    {
+      "_id": "00002,",
+      "category": {
+        "_d": "cat2",
+        "name": "Ctegory 2"
+      },
+      "name": "Ordinateur",
+      "price": "10",
+      "description": "eeeeeeeeeeeeezzzz zgyyye"
+    },
+    {
+      "_id": "00003,",
+      "category": {
+        "_d": "cat3",
+        "name": "Ctegory 3"
+      },
+      "name": "Chaise",
+      "price": "50",
+      "description": "eeeeeeeeeeeeezzzz zgyyye"
+    },
+    {
+      "_id": "00004,",
+      "category": {
+        "_d": "cat4",
+        "name": "Ctegory 4"
+      },
+      "name": "Motos",
+      "price": "2",
+      "description": "eeeeeeeeeeeeezzzz zgyyye"
+    }
+  ]
+}

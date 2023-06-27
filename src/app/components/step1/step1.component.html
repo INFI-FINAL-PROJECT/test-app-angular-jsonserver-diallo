@@ -1,0 +1,160 @@
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form class="flex" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel
+        >Informations personnelles de l'utilisateur
+      </ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Prenom</mat-label>
+          <input
+            formControlName="firstName"
+            type="text"
+            matInput
+            placeholder="Prenom"
+          />
+          <mat-error>{{ getFormControlErrorText(firstNameControl) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nom</mat-label>
+          <input
+            formControlName="lastName"
+            type="text"
+            matInput
+            placeholder="Nom"
+          />
+          <mat-error>{{ getFormControlErrorText(lastNameControl) }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            type="email"
+            matInput
+            placeholder="Email"
+          />
+          <mat-error>{{ getFormControlErrorText(emailControl) }}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Numero de telephone</mat-label>
+          <input
+            formControlName="phoneNumber"
+            type="text"
+            matInput
+            placeholder="0584108716"
+          />
+          <mat-error>{{
+            getFormControlErrorText(phoneNumberControl)
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          [disabled]="!firstFormGroup.valid"
+          color="primary"
+          mat-button
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form class="flex" [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Informations de l'entreprise </ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Nom de l'entreprise</mat-label>
+          <input
+            formControlName="companyName"
+            type="text"
+            matInput
+            placeholder="Nom de l'entreprise"
+          />
+          <mat-error>{{
+            getFormControlErrorText(companyNameControl)
+          }}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Taile des personnelles</mat-label>
+          <mat-select formControlName="companyLength">
+            <mat-option
+              *ngFor="let companyLength of companyLengths"
+              [value]="companyLength.value"
+            >
+              {{ companyLength.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error>{{
+            getFormControlErrorText(companyLengthControl)
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="max-width">
+          <mat-label>Localisation</mat-label>
+          <input
+            formControlName="companyLocation"
+            type="text"
+            matInput
+            placeholder="Localisation de l'entreprise"
+          />
+          <mat-error>{{
+            getFormControlErrorText(companyLocationControl)
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button class="ml-1" mat-button matStepperPrevious>Back</button>
+        <button
+          mat-raised-button
+          [disabled]="!secondFormGroup.valid"
+          color="primary"
+          mat-button
+          (click)="getProducts()"
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step class="row">
+    <ng-template matStepLabel>Choix de produit</ng-template>
+    <form>
+      <h4>Choisir la categorie</h4>
+      <mat-form-field>
+        <mat-label>Choisir la categorie</mat-label>
+        <select matNativeControl (change)="selectCategory($event)">
+          <option value=""></option>
+          <option *ngFor="let category of categories" [value]="category"
+                  [selected]="selectedCategory === category">{{ category }}</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Produits</mat-label>
+        <mat-select >
+          <mat-option
+            *ngFor="let product of products"
+            [value]="product._id"
+          >
+            {{ product.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+    </form>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

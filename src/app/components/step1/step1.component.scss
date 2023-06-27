@@ -1,0 +1,11 @@
+form {
+  width: 600px;
+}
+
+form mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.max-width {
+  width: 430px;
+}
